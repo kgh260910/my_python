@@ -3,7 +3,7 @@ from PIL import Image               # Pillow 의 사진 도구 (사진 열기·�
 # ---- 내가 바꾸는 값 ----
 PHOTO = "dog.jpg"
 RED_MIN = 150                       # 빨간 픽셀의 조건 ① : 빨강 숫자가 이보다 커야 한다
-OTHER_MAX = 80                      # 빨간 픽셀의 조건 ② : 초록·파랑 숫자는 이보다 작아야 한다
+OTHER_MAX = 100                      # 빨간 픽셀의 조건 ② : 초록·파랑 숫자는 이보다 작아야 한다
 COUNT_LINE = 20                     # 빨간 픽셀이 이 개수보다 많으면 '빨간 물체가 있다'
 
 img = Image.open(PHOTO).convert("RGB")                          # 사진을 연다
