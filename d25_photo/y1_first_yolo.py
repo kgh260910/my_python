@@ -1,7 +1,7 @@
 from ultralytics import YOLO            # ultralytics 꾸러미에서 YOLO 설계도 하나를 꺼낸다
 
 # ---- 내가 바꾸는 값 ----
-PHOTO = "cat.jpg"                       # 같은 폴더에 있는 사진 이름 (따옴표 안의 이름만 바꾼다)
+PHOTO = "street.jpg"                       # 같은 폴더에 있는 사진 이름 (따옴표 안의 이름만 바꾼다)
 
 model = YOLO("yolo26n.pt")              # 설계도 YOLO 로 model 을 만든다 : yolo26n.pt 는 이미 배워 둔 결과 파일 (처음 한 번만 내려받는다)
 results = model(PHOTO)                  # model 에 사진을 건네면 YOLO 의 답 묶음(results)이 돌아온다
