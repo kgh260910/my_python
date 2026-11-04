@@ -1,10 +1,10 @@
 from ultralytics import YOLO            # ultralytics 도구 상자에서 YOLO 하나만 꺼낸다
 
 # ---- 내가 바꾸는 값 ----
-PHOTO = "street.jpg"                    # 같은 폴더에 있는 사진 이름 (따옴표 안에 쓴다)
-CONF = 0.25                             # 자신감 기준 : 자신감이 이 숫자보다 낮은 네모는 버린다 (0 ~ 1 사이, 0.25 는 YOLO 의 처음 기준)
+PHOTO = "zoo.jpg"                    # 같은 폴더에 있는 사진 이름 (따옴표 안에 쓴다)
+CONF = 0.25   # 낮출수록 물체가 더 많이 잡힙니다. # 자신감 기준 : 자신감이 이 숫자보다 낮은 네모는 버린다 (0 ~ 1 사이, 0.25 는 YOLO 의 처음 기준)
 
-model = YOLO("yolo26n.pt")              # 가장 작은 YOLO 파일을 불러와 model 이라는 이름을 붙인다
+model = YOLO("yolo26n.pt")     #객체     # 가장 작은 YOLO 파일을 불러와 model 이라는 이름을 붙인다
 results = model(PHOTO, conf=CONF)       # 사진을 보여 준다 : 왼쪽 conf 는 YOLO 가 정한 이름, 오른쪽 CONF 는 내가 위에서 정한 숫자
 result = results[0]                     # 답 묶음의 0번째 = 사진 한 장에 대한 답
 
