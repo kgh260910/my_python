@@ -1,8 +1,18 @@
 from ultralytics import YOLO
 
-model = YOLO("yolo26n.pt")
+model26n = YOLO("yolo26n.pt")
+modelv8n = YOLO("YOLOv8n-oiv7.pt")
 
-print("YOLO가 아는 이름: ", len(model.names), "가지")
+# 내가 바꾸는 값
+NAME = modelv8n
 
-for number in model.names:
-    print(number, model.names[number])
+
+if (NAME == model26n):
+    print("YOLO26n이 아는 이름: ", len(model26n.names), "가지")
+    for number in model26n.names:
+        print(number, model26n.names[number])
+else:
+    print("YOLOv8n-oiv7이 아는 이름: ", len(modelv8n.names), "가지")
+    for number in modelv8n.names:
+        print(number, modelv8n.names[number])
+
