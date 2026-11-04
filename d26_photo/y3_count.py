@@ -3,9 +3,9 @@ from ultralytics import YOLO            # ultralytics 도구 상자에서 YOLO �
 # ---- 내가 바꾸는 값 ----
 PHOTO = "street.jpg"                    # 같은 폴더에 있는 사진 이름 (따옴표 안에 쓴다)
 WANT = "person"                         # 세고 싶은 물체의 이름 (person · car · dog · chair · orange …)
-CONF = 0.25                             # 자신감 기준 : 자신감이 이 숫자보다 낮은 네모는 버린다 (y2 와 같은 값)
+CONF = 0.5                             # 자신감 기준 : 자신감이 이 숫자보다 낮은 네모는 버린다 (y2 와 같은 값)
 
-model = YOLO("yolo26n.pt")              # 가장 작은 YOLO 파일을 불러와 model 이라는 이름을 붙인다
+model = YOLO("yolov8n-oiv7.pt")              # 가장 작은 YOLO 파일을 불러와 model 이라는 이름을 붙인다
 results = model(PHOTO, conf=CONF)       # 사진을 보여 준다 : 기준 CONF 를 넘는 네모만 남는다 (y2 와 같은 줄)
 result = results[0]                     # 답 묶음의 0번째 = 사진 한 장에 대한 답
 
