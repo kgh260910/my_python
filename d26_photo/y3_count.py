@@ -12,6 +12,15 @@ result = results[0]                     # 답 묶음의 0번째 = 사진 한 장
 
 count = 0                               # 센 개수 : 처음에는 0 (아직 하나도 세지 않았다)
 count_2 = 0
+
+# def wanted:
+#     for box in result.boxes:
+#         global name
+#         name = result.names[int(box.cls[0])]
+#         if name == "Man":
+#             return name
+
+
 for box in result.boxes:                # 남은 네모를 하나씩 꺼낸다
     name = result.names[int(box.cls[0])]        # 이름 번호(정수)를 이름 목록에서 찾아 글자로 바꾼다
     if name == WANT:                    # 이름이 세고 싶은 이름과 같으면
