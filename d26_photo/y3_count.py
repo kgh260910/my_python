@@ -2,7 +2,7 @@ from ultralytics import YOLO            # ultralytics 도구 상자에서 YOLO �
 
 # ---- 내가 바꾸는 값 ----
 PHOTO = "street.jpg"                    # 같은 폴더에 있는 사진 이름 (따옴표 안에 쓴다)
-WANT = "Man"                         # 세고 싶은 물체의 이름 (person · car · dog · chair · orange …
+WANT_1 = "Man"                         # 세고 싶은 물체의 이름 (person · car · dog · chair · orange …
 WANT_2 = "Jeans"
 CONF = 0.1                             # 자신감 기준 : 자신감이 이 숫자보다 낮은 네모는 버린다 (y2 와 같은 값)
 
@@ -20,14 +20,13 @@ count_2 = 0
 #         if name == "Man":
 #             return name
 
-
 for box in result.boxes:                # 남은 네모를 하나씩 꺼낸다
     name = result.names[int(box.cls[0])]        # 이름 번호(정수)를 이름 목록에서 찾아 글자로 바꾼다
-    if name == WANT:                    # 이름이 세고 싶은 이름과 같으면
-        count = count + 1               # 센 개수에 1 을 더해 다시 count 에 넣는다
+    if name == WANT_1:                    # 이름이 세고 싶은 이름과 같으면
+        count += 1               # 센 개수에 1 을 더해 다시 count 에 넣는다
     elif name == WANT_2:
-        count_2 = count_2 + 1
+        count_2 += 1
 
-print(PHOTO, "에서", WANT, "는", count, "개")     # 사진 이름, 세고 싶은 이름, 센 개수를 한 줄로 쓴다
+print(PHOTO, "에서", WANT_1, "는", count, "개")     # 사진 이름, 세고 싶은 이름, 센 개수를 한 줄로 쓴다
 print(PHOTO, "에서", WANT_2, "는", count_2, "개")
 result.save("yolo_count.jpg")           # 네모를 그린 사진을 파일로 저장한다

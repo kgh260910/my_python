@@ -4,7 +4,7 @@ model26n = YOLO("yolo26n.pt")
 modelv8n = YOLO("YOLOv8n-oiv7.pt")
 
 # 내가 바꾸는 값
-NAME = modelv8n
+NAME = model26n
 
 
 if (NAME == model26n):
