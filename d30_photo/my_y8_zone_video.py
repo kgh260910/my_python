@@ -16,8 +16,7 @@ ZY2 = 700
 ALERT = 5                               # 구역 안이 이 수 이상이면 경고
 
 model = YOLO("yolo26n.pt")
-results = model(VIDEO, conf=CONF, stream=True, verbose=False, save=True)  # save=True추가
-
+results = model(VIDEO, conf=CONF, stream=True, verbose=False)  # save=True추가
 
 frame = 0
 alerts = 0                              # 경고가 난 사진(프레임)의 수
@@ -40,7 +39,6 @@ for result in results:
     if inside > most:
         most = inside
     frame = frame + 1
-
 
 print("사진", frame, "장 중 경고", alerts, "장, 구역 안 최대", most, "명")
 # cv2.imwrite("y8_zone.avi",VIDEO)
