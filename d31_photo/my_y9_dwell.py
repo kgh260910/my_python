@@ -9,11 +9,14 @@ from ultralytics import YOLO
 VIDEO = "street.mp4"
 CONF = 0.25
 WANT = "person"
+
+TARGET_ID = 8
+
 ZX1 = 300                               # 구역: 왼쪽 위 점
 ZY1 = 300
 ZX2 = 900                               # 구역: 오른쪽 아래 점
 ZY2 = 700
-STOP = 240                              # 사진(프레임)을 이 수만큼 보면 멈춘다 (240 = 영상 끝까지)
+STOP = 60                              # 사진(프레임)을 이 수만큼 보면 멈춘다 (240 = 영상 끝까지)
 FPS = 24                                # 이 영상은 1초에 사진 약 24장
 SHORT = 12                              # 구역 안에 이 장수보다 적게 있던 ID 는 따로 표시 (12장 = 약 0.5초)
 from d31_video_output import make_video_path, get_video_fps, save_video_frame
@@ -43,7 +46,7 @@ for result in results:
                     stay[pid] = stay[pid] + 1       # 프레임 수 +1
                 else:                               # 처음 본 ID
                     stay[pid] = 1                   # 첫 프레임 기록  # pid 값을 1로 초기화
-    writer = save_video_frame(writer, OUTPUT_VIDEO, result.plot(), VIDEO_FPS, zone=(ZX1, ZY1, ZX2, ZY2))
+    writer = save_video_frame(writer, OUTPUT_VIDEO, result.plot(), VIDEO_FPS)
     print("프레임", frame, "번째: 구역 안 ID", inside_ids)
     if frame == STOP:                   # STOP 장을 봤으면
         break                           # 되풀이를 멈춘다
@@ -55,11 +58,15 @@ print("---- ID 별 구역 안 장수 (구역에 들어온 순서) ----")
 short_ids = 0
 for pid in stay:
     sec = round(stay[pid] / FPS, 1)     # 프레임 수를 초로 환산
-    if stay[pid] < SHORT:               # 0.5초보다 작을 경우
-        short_ids = short_ids + 1
-        print("ID", pid, ":", stay[pid], "장, 약", sec, "초  <- 짧다: ID 가 바뀐 조각일 수 있다")
-    else:
+
+    if TARGET_ID in stay:                # id 8 인 사람 프레임갯수세고 초로 환산하기
         print("ID", pid, ":", stay[pid], "장, 약", sec, "초")
+
+    # elif stay[pid] < SHORT:               # 0.5초보다 작을 경우
+    #     short_ids = short_ids + 1
+    #     print("ID", pid, ":", stay[pid], "장, 약", sec, "초  <- 짧다: ID 가 바뀐 조각일 수 있다")
+    # else:
+    #     print("ID", pid, ":", stay[pid], "장, 약", sec, "초")
 
 print("사진", frame, "장 / 구역에 들어온 서로 다른 ID", len(stay), "개 / 짧게 머문 ID", short_ids, "개")
 print("프레임마다 센 구역 안 수를 모두 더하면", count_sum, "(같은 사람을 여러 번 센 수)")
