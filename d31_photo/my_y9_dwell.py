@@ -45,7 +45,7 @@ for result in results:
                 if pid in stay:                     # 이미 본 ID
                     stay[pid] = stay[pid] + 1       # 프레임 수 +1
                 else:                               # 처음 본 ID
-                    stay[pid] = 1                   # 첫 프레임 기록  # pid 값을 1로 초기화
+                    stay[pid] = 1                   # 첫 프레임 기록 #stay에 키(pid),밸류:프레임(1)추가
     writer = save_video_frame(writer, OUTPUT_VIDEO, result.plot(), VIDEO_FPS)
     print("프레임", frame, "번째: 구역 안 ID", inside_ids)
     if frame == STOP:                   # STOP 장을 봤으면
@@ -59,10 +59,10 @@ short_ids = 0
 for pid in stay:
     sec = round(stay[pid] / FPS, 1)     # 프레임 수를 초로 환산
 
-    if TARGET_ID in stay:                # id 8 인 사람 프레임갯수세고 초로 환산하기
+    if pid == TARGET_ID:
         print("ID", pid, ":", stay[pid], "장, 약", sec, "초")
 
-    # elif stay[pid] < SHORT:               # 0.5초보다 작을 경우
+    # if stay[pid] < SHORT:               # 0.5초보다 작을 경우
     #     short_ids = short_ids + 1
     #     print("ID", pid, ":", stay[pid], "장, 약", sec, "초  <- 짧다: ID 가 바뀐 조각일 수 있다")
     # else:
