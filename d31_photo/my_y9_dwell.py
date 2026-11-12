@@ -10,7 +10,7 @@ VIDEO = "street.mp4"
 CONF = 0.25
 WANT = "person"
 
-TARGET_ID = 8
+TARGET_ID = 8             # pid 번호 적기
 
 ZX1 = 300                               # 구역: 왼쪽 위 점
 ZY1 = 300
