@@ -32,21 +32,24 @@ for result in results:
     for box in result.boxes:
         name = result.names[int(box.cls[0])]
         if name == WANT and box.id is not None:
-            pid = int(box.id[0])        # 상자에 표시된 ID
+            pid = int(box.id[0])        # 상자에 표시된 ID (personalId)
             x1, y1, x2, y2 = box.xyxy[0]
             cx = (float(x1) + float(x2)) / 2
             cy = (float(y1) + float(y2)) / 2
             if ZX1 <= cx <= ZX2 and ZY1 <= cy <= ZY2:
-                inside_ids.append(pid)
+                inside_ids.append(pid)           # pid(key)를 inside_ids에 추가합니다.
                 count_sum = count_sum + 1
                 if pid in stay:                     # 이미 본 ID
                     stay[pid] = stay[pid] + 1       # 프레임 수 +1
                 else:                               # 처음 본 ID
-                    stay[pid] = 1                   # 첫 프레임 기록
+                    stay[pid] = 1                   # 첫 프레임 기록  # pid 값을 1로 초기화
     writer = save_video_frame(writer, OUTPUT_VIDEO, result.plot(), VIDEO_FPS, zone=(ZX1, ZY1, ZX2, ZY2))
     print("프레임", frame, "번째: 구역 안 ID", inside_ids)
     if frame == STOP:                   # STOP 장을 봤으면
         break                           # 되풀이를 멈춘다
+
+
+# cv2를 활용하여 박스그려보기 (심화)
 
 writer.release()
 print("---- ID 별 구역 안 장수 (구역에 들어온 순서) ----")
