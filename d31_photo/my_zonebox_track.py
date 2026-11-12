@@ -22,9 +22,9 @@ writer = None
 model = YOLO("yolo26n.pt")
 results = model.track(VIDEO, conf=CONF,
                       stream=True, verbose=False)
-
 frame = 0
 all_ids = []                # 지금까지 나온 번호
+
 for result in results:
     ids = []                # 이 프레임의 번호
     inside = 0
@@ -42,12 +42,11 @@ for result in results:
                 if num not in all_ids:
                     all_ids.append(num)
     ids.sort()
-    writer = save_video_frame(writer, OUTPUT_VIDEO, result.plot(), VIDEO_FPS)
     frame = frame + 1
     print("프레임", frame, "번째: 자동차 ID", ids)
 
     # ---- 조각 3 : 구역을 그려 넣기 (y7 에서 가져옴) ----
-    img = result.plot(labels=True)
+    img = result.plot(labels=True)    #labels=False 면 id와 name등이 보이지 않게 된다.
     cv2.rectangle(img, (ZX1, ZY1), (ZX2, ZY2), (0, 255, 255), 2)
                                                  # B G R 값   #선 굵기
     # ---- 조각 4 : 구역 안 사람 수를 글자로 쓰기 (글자 준비 + putText) ----
