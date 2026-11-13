@@ -1,7 +1,7 @@
 import os
 import cv2
 from ultralytics import YOLO
-from d31_video_output import make_video_path, get_video_fps, save_video_frame
+from d31_video_output import make_video_path, get_video_fps, save_video_frame  #함수들을 가져와 쓴다.
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 os.chdir(HERE)
