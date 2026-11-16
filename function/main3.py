@@ -1,3 +1,4 @@
+"""
 def add(a, b):
     return a+b
 answer = add(1, 3)
@@ -14,7 +15,7 @@ def to_frames(sec):
 result, x = to_frames(2)
 print(result)
 print(x)
-
+"""
 # 심화과정
 
 def calculate(x, y):
@@ -29,5 +30,8 @@ print("합: ", add)
 print("빼기: ", sub)
 print("곱: ", mul)
 print("나누기: ", div)
+print("나누기: ", int(div))
+# print("나누기: ", round(1,div))  에러발생
 
+print(add, sub, mul, div)
 
