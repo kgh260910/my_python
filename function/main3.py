@@ -32,6 +32,7 @@ print("곱: ", mul)
 print("나누기: ", div)
 print("나누기: ", int(div))
 # print("나누기: ", round(1,div))  에러발생
+print("나누기: ", round(div,0))
 
 print(add, sub, mul, div)
 
