@@ -1,0 +1,17 @@
+class Box:
+    def __init__(self, x1, x2):
+        self.x1 = x1
+        self.x2 = x2
+    def center_x(self):
+        return (self.x1 + self.x2) / 2
+b = Box(500, 700)
+print(b.center_x())
+
+# q2_3_argument.py
+# 문제: Run 뒤 오류를 읽고 Box(500)에 빠진 값을 추가해 600.0을 출력하세요.
+class Box:
+    def init(self, x1, x2):
+        self.x1 = x1
+        self.x2 = x2
+Box.init(b,500,700)
+print((b.x1 + b.x2) / 2)
