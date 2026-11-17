@@ -19,14 +19,18 @@ print(b_center)
 class Box:
     pass
 b1 = Box()   # 객체 생성
-b2 = Box()   # 객체 생성
+def center_x(box):
+    return (box.x1 + box.x2) / 2
 
 b1.x1 = 500   #b1의 x1속성에 500을 할당시킨다.
 b1.x2 = 700   #attribute
+
+b1 = Box()
+b2 = Box()   # 객체 생성
 
 b2.x1 = 0
 b2.x2 = 200
 
 print(b1.x1)
-print(b2.x1)
+# print(b2.x1)
 # print(b1.x3)
