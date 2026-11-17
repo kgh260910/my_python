@@ -1,4 +1,5 @@
 class Box:
+    # 생성자
     def __init__(self, x1, x2):
         self.x1 = x1
         self.x2 = x2
@@ -9,6 +10,7 @@ print(b.center_x())
 
 # q2_3_argument.py
 # 문제: Run 뒤 오류를 읽고 Box(500)에 빠진 값을 추가해 600.0을 출력하세요.
+# 생성자가 아닌 메서드로
 class Box:
     def init(self, x1, x2):
         self.x1 = x1
