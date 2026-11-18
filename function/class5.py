@@ -9,7 +9,7 @@ class Box:
 b = Box(500, 700)
 print(b.center_x())
 """
-from function.main4 import ZX1
+
 
 ZX1 = 300
 ZY1 = 300
@@ -39,11 +39,13 @@ class Box:
 b1 = Box(500, 400, 700, 600)
 b2 = Box(0, 400, 200, 600)
 
-is_inside(b1.center_x(), b1.center_y()) # 인자를 메서드로 넣었다.
-b1.in_zone()                            # => 반환값이 있는 메서드
+a1 = is_inside(b1.center_x(), b1.center_y()) # 인자를 메서드로 넣었다.
+a2 = b1.in_zone()                            # => 반환값이 있는 메서드
+print(a1)          # True
+print(a2)          # True
 
-print(b1.in_zone())
-print(b2.in_zone())
+print(b1.in_zone())  # True
+print(b2.in_zone())  # False
 
 
 
