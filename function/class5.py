@@ -9,7 +9,7 @@ class Box:
 b = Box(500, 700)
 print(b.center_x())
 """
-
+import cv2
 
 ZX1 = 300
 ZY1 = 300
@@ -48,4 +48,12 @@ print(b1.in_zone())  # True
 print(b2.in_zone())  # False
 
 
+# import cv2 상단에 존재
+cv2.imread()     # cv2 모듈 안의 imread 함수
+
+model.predict()    # model객체가 predict()메서드를 실행합니다.(이전 수업자료 참고)
+# random.randint(...)
+# cap.read()
+
+box.xyxy          # box객체의 xyxy 속성
 
