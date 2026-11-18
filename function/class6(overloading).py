@@ -27,7 +27,7 @@ class Box:
         self.y1 = y1
         self.x2 = x2
         self.y2 = y2
-
+        self.y3 = y3      # 여기에 주석을 주면 41번째 줄에
 
     def center_x(self):
         return (self.x1 + self.x2) / 2
@@ -38,4 +38,4 @@ b1 = Box(500, 400, 700, 600, 100)
 print(b0.center_x())
 print(b1.center_x())
 # print(b2.center_x())
-print(b1.y3)
+print(b1.y3)           # AttributeError가 발생합니다.
