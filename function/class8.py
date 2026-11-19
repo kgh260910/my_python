@@ -25,16 +25,16 @@ class Box:
     def __str__(self):              # str(...) : 문자열로 변환 합니다.
         return "Box center " +str(self.center_x()) + ", " +str(self.center_y())
 
-class StrictBox:
+class StrictBox:   # 두개의 좌표가 is_inside()에 의해 둘다 안에 있으면 박스 전체가 완전히 구역 안에 있다.
     def in_zone(self):
         return is_inside(self.x1, self.y1) and is_inside(self.x2, self.y2)
 
 class LabelBox(Box):
     def __init__(self, x1, y1, x2, y2, label):
-        super().__init__(x1, y1, x2, y2)
+        super().__init__(x1, y1, x2, y2)   # 부모클래스인 Box.__init__(...)을 사용한다.
         self.label = label
     def __str__(self):
-        return self.label + " " + super().__str__()
+        return self.label + " " + super().__str__()   #부모클래스의 __str__(self)를 사용한다.
 
 b1 = Box(500, 400, 700, 600)
 b2 = StrictBox(200, 400, 500, 600)
