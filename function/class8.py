@@ -25,8 +25,8 @@ class Box:
     def __str__(self):              # str(...) : 문자열로 변환 합니다.
         return "Box center " +str(self.center_x()) + ", " +str(self.center_y())
 
-class StrictBox:   # 두개의 좌표가 is_inside()에 의해 둘다 안에 있으면 박스 전체가 완전히 구역 안에 있다.
-    def in_zone(self):
+class StrictBox(Box):   # 상속받은 StrictBox class
+    def in_zone(self):  # 두개의 좌표가 is_inside()에 의해 둘다 안에 있으면 박스 전체가 완전히 구역 안에 있다.
         return is_inside(self.x1, self.y1) and is_inside(self.x2, self.y2)
 
 class LabelBox(Box):
@@ -40,6 +40,14 @@ b1 = Box(500, 400, 700, 600)
 b2 = StrictBox(200, 400, 500, 600)
 b3 = LabelBox(0, 400, 200, 600, "car")
 boxes = [b1, b2, b3]
+count = 0
+for b in boxes:
+    print(b, b.in_zone())
+    if b.in_zone():
+        count += 3
+print(count)
+print(b1.x1, b1.y1, b1.x2, b1.y2)
+print(b1.center_x(), b1.center_y(), b1.in_zone())
 
 
 
