@@ -11,7 +11,7 @@ records = [record, record2]
 print(records)            # record,record2 출력
 print(records[1])         # record2 출력
 print(records[1]["x1"])   # record2의 "x1"키의 값 출력
-print(records[1][0])    # KeyError : 0
+# print(records[1][0])    # KeyError : 0
 
 
 
