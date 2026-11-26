@@ -15,7 +15,7 @@ if not photo_names:
 if not 1 <= NUMBER <= len(photo_names):
     raise ValueError(f"NUMBER는 1부터 {len(photo_names)} 사이여야 합니다.")
 PHOTO = os.path.join(PHOTO_DIR, photo_names[NUMBER - 1])    # 두개를 붙입니다(join)
-WEIGHT = "yolo26n.pt"
+WEIGHT = "best.pt"
 model = YOLO(WEIGHT)
 result = model.predict(PHOTO, conf=0.25, verbose=False)[0]  # predict : 예측하다 , verbose=False : 추론 중 콘솔에 찍히는걸 끕니다.
 print("사진 번호:", NUMBER, "/", len(photo_names), photo_names[NUMBER - 1]) # 사진 번호: 1 / 29 (사진이름) 형식으로 출력됩니다.
