@@ -7,7 +7,7 @@ import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
 
 # 1. 수집 설정값 (실습 시 원하는 검색어와 목표 수량으로 변경)
-query = "아이오닉 3"
+query = "아이오닉 3"  # 여기에 검색어를 적으세요(수집할 이미지)
 target_count = 200
 output_dir = f"dataset/{query}_thumb"
 os.makedirs(output_dir, exist_ok=True)
